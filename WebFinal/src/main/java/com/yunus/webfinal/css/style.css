@@ -1,0 +1,18 @@
+.wrapper{
+    border-top: 03px solid green;
+}
+.wrapper a{
+    text-decoration: none;
+    color: green;
+}
+.link-yandex {
+    color: #FC3F1D !important;
+}
+
+.link-facebook {
+    color: #3b5998 !important;
+}
+
+.link-google {
+    color: #DB4437 !important;
+}

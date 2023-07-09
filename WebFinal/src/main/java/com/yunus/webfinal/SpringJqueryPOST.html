@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Fontawesome CSS -->
+    <link href="../fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="../fontawesome/css/brands.css" rel="stylesheet">
+    <link href="../fontawesome/css/solid.css" rel="stylesheet">
+    <title>Sign Up Login Form Using Boostrap 5</title>
+</head>
+<body class="bg-light">
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-4 bg-white m-auto rounded-top wrapper">
+            <h2 class="text-center pt-3">Signup Now</h2>
+            <div class="d-flex justify-content-center d-grid gap-3 mb-3 mt-3">
+                <a href="#facebook" class="link-facebook">
+                    <i class="fa-brands fa-facebook fa-2xl"></i>
+                </a>
+                <a href="#google" class="link-google">
+                    <i class="fa-brands fa-google fa-2xl"></i>
+                </a>
+                <a href="#yandex" class="link-yandex">
+                    <i class="fa-brands fa-yandex-international fa-2xl"></i>
+                </a>
+            </div>
+            <div>
+                <p class="text-center">or use your email address</p>
+            </div>
+            <!--Form Start-->
+            <form id="myFormId" class="signup-form" action="#">
+                <div class="input-group mb-3">
+                    <span class="input-group-text rounded-pill"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control rounded-pill" id="first_name" placeholder="First Name">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text rounded-pill"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control rounded-pill" id="last_name" placeholder="Last Name">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text rounded-pill"><i class="fa fa-envelope"></i></span>
+                    <input type="email" class="form-control rounded-pill" id="email" placeholder="Email">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text rounded-pill"><i class="fa fa-lock"></i></span>
+                    <input type="password" class="form-control rounded-pill" id="password" placeholder="Password">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text rounded-pill"><i class="fa fa-lock"></i></span>
+                    <input type="password" class="form-control rounded-pill" id="confirm_password" placeholder="Confirm Password">
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success">Create Account</button>
+                    <p class="text-center">
+                        Already have an account?<a href="login.html">Sign In</a>
+                    </p>
+                </div>
+            </form>
+            <!--Form Close-->
+        </div>
+    </div>
+</div>
+<!-- Fontawesome JS -->
+<script defer src="../fontawesome/js/brands.js"></script>
+<script defer src="../fontawesome/js/solid.js"></script>
+<script defer src="../fontawesome/js/fontawesome.js"></script>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Submit event handler
+        $("#myFormId").submit(function (event) {
+            event.preventDefault();
+            let firstName = $("#first_name").val();
+            let lastName = $("#last_name").val();
+            let email = $("#email").val();
+            let password = $("#password").val();
+            let confirmPassword = $("#confirm_password").val();
+
+            // Perform validation or additional checks if needed
+
+            // Create the data object
+            const formData = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,
+                confirmPassword: confirmPassword
+            };
+
+            // Send the data via Ajax
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "http://localhost:8080/api/v1/jquery/post",
+                data: JSON.stringify(formData),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function(data) {
+                    // Handle the success response
+                    console.log(data);
+                    // Do something with the response
+                },
+                error: function (text) {
+                    // Handle the error response
+                    console.log(text);
+                    // Display an error message or take appropriate action
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
